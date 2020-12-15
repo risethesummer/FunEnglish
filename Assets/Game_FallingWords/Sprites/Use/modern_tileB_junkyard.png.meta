@@ -1,0 +1,1274 @@
+fileFormatVersion: 2
+guid: 4baf8cc9f3d171a488fc4441466cc57d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8047097641722518227
+    second: modern_tileB_junkyard_0
+  - first:
+      213: -5908184328491355949
+    second: modern_tileB_junkyard_1
+  - first:
+      213: -8933826746809846513
+    second: modern_tileB_junkyard_2
+  - first:
+      213: -1316499422762805171
+    second: modern_tileB_junkyard_3
+  - first:
+      213: 844757819586961142
+    second: modern_tileB_junkyard_4
+  - first:
+      213: 6722952911409110932
+    second: modern_tileB_junkyard_5
+  - first:
+      213: -775945991853609875
+    second: modern_tileB_junkyard_6
+  - first:
+      213: 3915282804251912094
+    second: modern_tileB_junkyard_7
+  - first:
+      213: -4231447381587719391
+    second: modern_tileB_junkyard_8
+  - first:
+      213: 8462803584631039878
+    second: modern_tileB_junkyard_9
+  - first:
+      213: -3794680536389095994
+    second: modern_tileB_junkyard_10
+  - first:
+      213: -6782761161466639608
+    second: modern_tileB_junkyard_11
+  - first:
+      213: -7215820417372784445
+    second: modern_tileB_junkyard_12
+  - first:
+      213: 1684274714280879015
+    second: modern_tileB_junkyard_13
+  - first:
+      213: 2883214225347517913
+    second: modern_tileB_junkyard_14
+  - first:
+      213: -130285167288723273
+    second: modern_tileB_junkyard_15
+  - first:
+      213: -2549073899608731029
+    second: modern_tileB_junkyard_16
+  - first:
+      213: 2516209955136861592
+    second: modern_tileB_junkyard_17
+  - first:
+      213: -3190750121659588706
+    second: modern_tileB_junkyard_18
+  - first:
+      213: -315486614643887440
+    second: modern_tileB_junkyard_19
+  - first:
+      213: -1862369886874984839
+    second: modern_tileB_junkyard_20
+  - first:
+      213: 7754324257453883177
+    second: modern_tileB_junkyard_21
+  - first:
+      213: 1474530370730485050
+    second: modern_tileB_junkyard_22
+  - first:
+      213: 1767405410154404804
+    second: modern_tileB_junkyard_23
+  - first:
+      213: -2001741588512370876
+    second: modern_tileB_junkyard_24
+  - first:
+      213: -1285196830788134263
+    second: modern_tileB_junkyard_25
+  - first:
+      213: -8442759732322383472
+    second: modern_tileB_junkyard_26
+  - first:
+      213: -4702369844135245650
+    second: modern_tileB_junkyard_27
+  - first:
+      213: 2832148688595521387
+    second: modern_tileB_junkyard_28
+  - first:
+      213: -4791991948520814817
+    second: modern_tileB_junkyard_29
+  - first:
+      213: 8267777549461112953
+    second: modern_tileB_junkyard_30
+  - first:
+      213: -1344666872208625021
+    second: modern_tileB_junkyard_31
+  - first:
+      213: 1494561278489912017
+    second: modern_tileB_junkyard_32
+  - first:
+      213: -8290275204244773050
+    second: modern_tileB_junkyard_33
+  - first:
+      213: -8870240277031753069
+    second: modern_tileB_junkyard_34
+  - first:
+      213: 7863069421273927781
+    second: modern_tileB_junkyard_35
+  - first:
+      213: 2709947815717252147
+    second: modern_tileB_junkyard_36
+  - first:
+      213: 350888167562308755
+    second: modern_tileB_junkyard_37
+  - first:
+      213: 4197092896057162827
+    second: modern_tileB_junkyard_38
+  - first:
+      213: 445762628321026919
+    second: modern_tileB_junkyard_39
+  - first:
+      213: -3233675754202421409
+    second: modern_tileB_junkyard_40
+  - first:
+      213: -9085926450991212517
+    second: modern_tileB_junkyard_41
+  - first:
+      213: 6214522729454899550
+    second: modern_tileB_junkyard_0
+  - first:
+      213: 5569470607284819799
+    second: modern_tileB_junkyard_1
+  - first:
+      213: -2132456255834725470
+    second: modern_tileB_junkyard_2
+  - first:
+      213: 427232448083943993
+    second: modern_tileB_junkyard_3
+  - first:
+      213: -2528766059417795183
+    second: modern_tileB_junkyard_4
+  - first:
+      213: 4163544051720488374
+    second: modern_tileB_junkyard_5
+  - first:
+      213: -1625104570131726460
+    second: modern_tileB_junkyard_6
+  - first:
+      213: 4060633964365347499
+    second: modern_tileB_junkyard_7
+  - first:
+      213: 3086785258363777490
+    second: modern_tileB_junkyard_8
+  - first:
+      213: -746440322824799312
+    second: modern_tileB_junkyard_9
+  - first:
+      213: -5449046762785495074
+    second: modern_tileB_junkyard_10
+  - first:
+      213: 8290102721883480745
+    second: modern_tileB_junkyard_11
+  - first:
+      213: -6703819939444340616
+    second: modern_tileB_junkyard_12
+  - first:
+      213: 684347250345752209
+    second: modern_tileB_junkyard_13
+  - first:
+      213: -4196106168491910397
+    second: modern_tileB_junkyard_14
+  - first:
+      213: 4793674709614370913
+    second: modern_tileB_junkyard_15
+  - first:
+      213: -5942176059921541836
+    second: modern_tileB_junkyard_16
+  - first:
+      213: 3597557820573357275
+    second: modern_tileB_junkyard_17
+  - first:
+      213: 2986922212297889634
+    second: modern_tileB_junkyard_18
+  - first:
+      213: -5803058881931405470
+    second: modern_tileB_junkyard_19
+  - first:
+      213: -6490617869658594593
+    second: modern_tileB_junkyard_20
+  - first:
+      213: -4850807564124162964
+    second: modern_tileB_junkyard_21
+  - first:
+      213: -7949974544802872357
+    second: modern_tileB_junkyard_22
+  - first:
+      213: -6938061483730851078
+    second: modern_tileB_junkyard_23
+  - first:
+      213: 1738126866818918035
+    second: modern_tileB_junkyard_24
+  - first:
+      213: 5994832784295518859
+    second: modern_tileB_junkyard_25
+  - first:
+      213: 6879392414774987584
+    second: modern_tileB_junkyard_26
+  - first:
+      213: -1670366368539297671
+    second: modern_tileB_junkyard_27
+  - first:
+      213: 7083503385906808922
+    second: modern_tileB_junkyard_28
+  - first:
+      213: 9172544721952436114
+    second: modern_tileB_junkyard_29
+  - first:
+      213: 7616494736025242368
+    second: modern_tileB_junkyard_30
+  - first:
+      213: 4319363558382712480
+    second: modern_tileB_junkyard_31
+  - first:
+      213: -4046600922723299440
+    second: modern_tileB_junkyard_32
+  - first:
+      213: 7397473226287576960
+    second: modern_tileB_junkyard_33
+  - first:
+      213: 6059032292840215081
+    second: modern_tileB_junkyard_34
+  - first:
+      213: 6664179924374657671
+    second: modern_tileB_junkyard_35
+  - first:
+      213: 2956937540368064021
+    second: modern_tileB_junkyard_36
+  - first:
+      213: -305067317923119555
+    second: modern_tileB_junkyard_37
+  - first:
+      213: 4495377854130681959
+    second: modern_tileB_junkyard_38
+  - first:
+      213: -7050313026593094671
+    second: modern_tileB_junkyard_39
+  - first:
+      213: 6565590807180164461
+    second: modern_tileB_junkyard_40
+  - first:
+      213: -4468260022875721364
+    second: modern_tileB_junkyard_41
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 8
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_0
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 194
+        width: 15
+        height: 22
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5110c91f7b6e3650800000000000000
+      internalID: 6214522729454899550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 195
+        width: 29
+        height: 28
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 757d03e420cba4d40800000000000000
+      internalID: 5569470607284819799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_2
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 195
+        width: 15
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a369e3655ef762e0800000000000000
+      internalID: -2132456255834725470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_3
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 211
+        width: 14
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9326090e5a5dde500800000000000000
+      internalID: 427232448083943993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_4
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 213
+        width: 8
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 195865cbaa408ecd0800000000000000
+      internalID: -2528766059417795183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_5
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 213
+        width: 22
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b58d717141e7c930800000000000000
+      internalID: 4163544051720488374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_6
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 194
+        width: 14
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48f3f6ee0087279e0800000000000000
+      internalID: -1625104570131726460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_7
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 196
+        width: 15
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baaf1e093154a5830800000000000000
+      internalID: 4060633964365347499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_8
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 196
+        width: 27
+        height: 17
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d17fa686d676da20800000000000000
+      internalID: 3086785258363777490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_9
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 195
+        width: 21
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bbffff2b7c14a5f0800000000000000
+      internalID: -746440322824799312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_10
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 178
+        width: 11
+        height: 12
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed7adabe6d81164b0800000000000000
+      internalID: -5449046762785495074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_11
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 163
+        width: 14
+        height: 20
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a22d51b08c5c0370800000000000000
+      internalID: 8290102721883480745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_12
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 170
+        width: 14
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8784d3f884f37f2a0800000000000000
+      internalID: -6703819939444340616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_13
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 164
+        width: 20
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 196bfd7c23a4f7900800000000000000
+      internalID: 684347250345752209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_14
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 163
+        width: 20
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30bd633fbaf64c5c0800000000000000
+      internalID: -4196106168491910397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_15
+      rect:
+        serializedVersion: 2
+        x: 117
+        y: 161
+        width: 23
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 160a65b10cd868240800000000000000
+      internalID: 4793674709614370913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_16
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 160
+        width: 14
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 435db834b56298da0800000000000000
+      internalID: -5942176059921541836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_17
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 131
+        width: 14
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd41432f6c71de130800000000000000
+      internalID: 3597557820573357275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_18
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 128
+        width: 16
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2675dbb3deda37920800000000000000
+      internalID: 2986922212297889634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_19
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 128
+        width: 29
+        height: 30
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2679dcb51b4677fa0800000000000000
+      internalID: -5803058881931405470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_20
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 131
+        width: 14
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd26232bf61bce5a0800000000000000
+      internalID: -6490617869658594593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_21
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 131
+        width: 14
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c64f99a98387eacb0800000000000000
+      internalID: -4850807564124162964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_22
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 131
+        width: 14
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd380a3b5440ca190800000000000000
+      internalID: -7949974544802872357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_23
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 131
+        width: 14
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa276807dd07bf90800000000000000
+      internalID: -6938061483730851078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_24
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 130
+        width: 41
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 396ed472d211f1810800000000000000
+      internalID: 1738126866818918035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_25
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 130
+        width: 41
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b82ecc3c7ace13350800000000000000
+      internalID: 5994832784295518859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_26
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 82
+        width: 15
+        height: 21
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04b0e21e3f2887f50800000000000000
+      internalID: 6879392414774987584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_27
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 80
+        width: 29
+        height: 29
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 978b47643aaa1d8e0800000000000000
+      internalID: -1670366368539297671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_28
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 81
+        width: 14
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a58804aacc8ad4260800000000000000
+      internalID: 7083503385906808922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_29
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 98
+        width: 41
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29feb5e83dc6b4f70800000000000000
+      internalID: 9172544721952436114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_30
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 98
+        width: 41
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00bca66cb9933b960800000000000000
+      internalID: 7616494736025242368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_31
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 56
+        width: 27
+        height: 18
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a63b29754671fb30800000000000000
+      internalID: 4319363558382712480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_32
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 39
+        width: 49
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09f4f4d86e597d7c0800000000000000
+      internalID: -4046600922723299440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_33
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 66
+        width: 41
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0877550b4ba19a660800000000000000
+      internalID: 7397473226287576960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_34
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 66
+        width: 41
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9229c59a4c1061450800000000000000
+      internalID: 6059032292840215081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_35
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 34
+        width: 24
+        height: 11
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78a14a7355ceb7c50800000000000000
+      internalID: 6664179924374657671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_36
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 34
+        width: 41
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51ed7a4c607290920800000000000000
+      internalID: 2956937540368064021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_37
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 34
+        width: 41
+        height: 26
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3e7c9204ee24cbf0800000000000000
+      internalID: -305067317923119555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_38
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 2
+        width: 18
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 768fd9e375ac26e30800000000000000
+      internalID: 4495377854130681959
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_39
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 5
+        width: 18
+        height: 24
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f30c9e08a1482e90800000000000000
+      internalID: -7050313026593094671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_40
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 2
+        width: 20
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6d3b8a9d0aad1b50800000000000000
+      internalID: 6565590807180164461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: modern_tileB_junkyard_41
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 7
+        width: 20
+        height: 23
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c61f96cde2d8df1c0800000000000000
+      internalID: -4468260022875721364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
