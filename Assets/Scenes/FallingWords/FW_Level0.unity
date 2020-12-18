@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -28231,8 +28231,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35e0ee62f1bbc274fac19d185555f587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missedTime: 3
   currentLevel: 0
+  winSound: {fileID: 8300000, guid: 47589c0a1c73bd448b0ea63d3abbc9ac, type: 3}
+  loseSound: {fileID: 8300000, guid: 7ee2098a6141c484d97cbc07f8b726b0, type: 3}
+  guide: {fileID: 3861131}
+  uiManager: {fileID: 770215622}
+  missedTime: 3
   maxWordsInTopic: 0
   boxes:
   - {fileID: 665561901}
@@ -28240,11 +28244,7 @@ MonoBehaviour:
   prefabWord: {fileID: 6018432131642227602, guid: 4149ea650585dba43ac3bb6e6f72a9dc,
     type: 3}
   yPos: 12
-  uiManager: {fileID: 770215622}
   train: {fileID: 76142376}
-  winSound: {fileID: 8300000, guid: 47589c0a1c73bd448b0ea63d3abbc9ac, type: 3}
-  loseSound: {fileID: 8300000, guid: 7ee2098a6141c484d97cbc07f8b726b0, type: 3}
-  guide: {fileID: 3861131}
 --- !u!1 &1272273501
 GameObject:
   m_ObjectHideFlags: 0
@@ -28513,7 +28513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 99.700195, y: -77.69971}
+  m_AnchoredPosition: {x: 99.700195, y: -77.69922}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1314736601
@@ -29100,7 +29100,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -77.7}
+  m_AnchoredPosition: {x: 250, y: -77.700195}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1536213721

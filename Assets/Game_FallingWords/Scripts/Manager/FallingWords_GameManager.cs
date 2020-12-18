@@ -5,17 +5,12 @@ using UnityEngine.SceneManagement;
 
 namespace FallingWords
 {
+    using Manager;
     namespace FW_Manager
     {
-        public class FallingWords_GameManager : MonoBehaviour
+        public class FallingWords_GameManager : GamePlay_Manager
         {
-            [SerializeField] private FW_UIManager uiManager;
-
-            private readonly List<int> stars = new List<int>(); //Store stars
-
             private const string headSceneName = "FW_Level";
-
-            [SerializeField] private TextAsset levelWithDifficult;
 
             [System.Serializable]
             struct Scene_Boxes_Words
@@ -53,7 +48,7 @@ namespace FallingWords
                 StartCoroutine(levelManager.StartLevel(level, maxWords, missed));
             }
 
-            public IEnumerator LoadLevel(int level, bool needRotate)
+            public override IEnumerator LoadLevel(int level)
             {
 
                 if (level <= stars.Count && level < levels.Count)
@@ -74,8 +69,7 @@ namespace FallingWords
                     //Hide the ui, because this scene just has a UI
                     uiManager.HideWithBackground();
 
-                    if (needRotate)
-                        Screen.orientation = ScreenOrientation.Landscape; //Right rotate
+                    Screen.orientation = ScreenOrientation.Landscape; //Right rotate
 
                     StartLevel(level, currentLev.wordInTopic, currentLev.missedTimes);
                 }
@@ -83,7 +77,6 @@ namespace FallingWords
 
             public IEnumerator UnloadLevel(int level)
             {
-
                 yield return new WaitForSeconds(1f); //Wait ui to drop down
 
                 var currentLev = levels[level];
@@ -115,22 +108,21 @@ namespace FallingWords
                     uiManager.ModifyStar(level, star); //Slot  = level
                 }
 
-                print(nextLevel);
-
                 if (!nextLevel)
                     Screen.orientation = ScreenOrientation.Portrait;
                 else
-                    StartCoroutine(LoadLevel(level + 1, !nextLevel));
+                    StartCoroutine(LoadLevel(level + 1));
 
             }
         }
 
     }
 
-    public interface IDestroy
-    {
-        void DoDestroy();
-    }
+    
 
 }
 
+public interface IDestroyable
+{
+    void DoDestroy();
+}

@@ -6,7 +6,7 @@ namespace FallingWords
 {
     namespace Objects
     {
-        public class FallingWord : MonoBehaviour, ITouch, IDestroy
+        public class FallingWord : MonoBehaviour, ITouch, IDestroyable
         {
             public string topic { get; set; }
 

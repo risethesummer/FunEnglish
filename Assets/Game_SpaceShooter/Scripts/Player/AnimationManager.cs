@@ -7,6 +7,7 @@ namespace SpaceShooter
         public class AnimationManager : MonoBehaviour
         {
             private Animator animator;
+            [SerializeField] float deadLength;
 
             //[SerializeField]
             //private float timeBeforeDestroying;
@@ -25,7 +26,7 @@ namespace SpaceShooter
             public float DestroyAnim()
             {
                 animator.Play("Destroy");
-                return animator.GetCurrentAnimatorStateInfo(0).length;
+                return deadLength;
             }
         }
     }

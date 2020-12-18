@@ -50,7 +50,7 @@ public class Word_Check
 {
     public string word { private set; get; }
 
-    public bool right { private set; get; }
+    public bool right { set; get; }
 
     public Word_Check(string word, bool right)
     {

@@ -10,19 +10,9 @@ namespace FallingWords
     {
         namespace Level
         {
-            public class FallingWords_Level_Manager : MonoBehaviour
+            public class FallingWords_Level_Manager : Manager.LevelManager_BaseClass
             {
                 [SerializeField] private int missedTime = 3;
-
-                private int countWrong = 0;
-
-                private int subtractStar;
-
-                private int currentStars = 3;
-
-                private readonly Queue<Word_Check> reviewWords = new Queue<Word_Check>();
-
-                [SerializeField] private int currentLevel;
 
                 [SerializeField] private int maxWordsInTopic;
 
@@ -30,26 +20,18 @@ namespace FallingWords
 
                 [SerializeField] private FallingWord prefabWord;
 
-                [SerializeField] private Queue<IDestroy> destroyers = new Queue<IDestroy>(); //Use in replay
-
                 private readonly Queue<Word> wordsToOut = new Queue<Word>();
-
-                private WaitForSeconds waitCor;
 
                 private Vector3 initialPos;
 
                 [SerializeField] private int yPos;
 
-                [SerializeField] private UIManager_Level_FW uiManager;
 
                 [SerializeField] private Train train;
 
                 public event System.Action<bool, int, int, bool> OnEndLevel;
 
-                [SerializeField] private AudioClip winSound;
-                [SerializeField] private AudioClip loseSound;
 
-                [SerializeField] private GameObject guide;
 
                 private readonly string[] cheatCode = { "l", "i", "f", "e" };
                 private int index = 0;
@@ -66,7 +48,7 @@ namespace FallingWords
 
                 private void Update()
                 {
-                    CheatCode();
+                   // CheatCode();
                 }
 
                 public void CheatCode()
@@ -95,10 +77,13 @@ namespace FallingWords
                     this.maxWordsInTopic = maxWordsInTopic;
                     this.currentLevel = level;
                     this.missedTime = missed;
+
                     countWrong = 0;
                     currentStars = 3;
+
                     uiManager.CountWrong(missedTime);
-                    destroyers.Enqueue(train.GetComponent<IDestroy>());
+
+                    destroyers.Enqueue(train.GetComponent<IDestroyable>());
 
                     subtractStar = (missed / 3) > 0 ? missed / 3 : 1; //count how many missed time will subtract 1 star
 
@@ -128,7 +113,7 @@ namespace FallingWords
 
                         var falling = Instantiate(prefabWord, initialPos, Quaternion.identity);
 
-                        destroyers.Enqueue(falling.GetComponent<IDestroy>());
+                        destroyers.Enqueue(falling.GetComponent<IDestroyable>());
 
                         List<float> pos = new List<float>(); //Find pos first
                         foreach (var box in boxes)
@@ -164,6 +149,7 @@ namespace FallingWords
                 public void HandleEndingLevel()
                 {
                     bool win = countWrong <= missedTime;
+
                     train.Move();
 
                     if (win)
@@ -174,24 +160,19 @@ namespace FallingWords
                     uiManager.SetupEnding(win, currentStars, reviewWords);
                 }
 
-                public void HandleReplay()
+                public override void HandleReplay()
                 {
-                    print("replay");
-                    while (destroyers.Count > 0) //Clear words and train
-                        destroyers.Dequeue().DoDestroy();
+                    base.HandleReplay();
 
-                    uiManager.ResetStart();
-
-                    reviewWords.Clear();
                     wordsToOut.Clear(); //restore words
                     StartCoroutine(StartLevel(currentLevel, maxWordsInTopic, missedTime));
-                    uiManager.Hide();
                 }
 
-                public void HandleBackToMenu(bool nextLevel)
+                public override void HandleBackToMenu(bool nextLevel)
                 {
+                    base.HandleBackToMenu(nextLevel);
+
                     bool win = countWrong <= missedTime;
-                    uiManager.Hide(); //UI of current level
                     OnEndLevel?.Invoke(win, currentLevel, currentStars, nextLevel);
                 }
 

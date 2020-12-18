@@ -8,10 +8,11 @@ namespace Manager
         public class UI_OptionsPlay : UI_BaseClass
         {
             [SerializeField] private Button topicsButton;
-            [SerializeField] private FallingWords.FW_Manager.FW_UIManager topicUIManager;
 
-            //[SerializeField] private Button synAntButton;
-            //[SerializeField] private UI_BaseClass synAntUIManager;
+            [SerializeField] private GamePlay_UIManager topicUIManager;
+
+            [SerializeField] private Button synAntButton;
+            [SerializeField] private GamePlay_UIManager synAntUIManager;
 
             //[SerializeField] private Button picturesButton;
             //[SerializeField] private UI_BaseClass picturesUIManager;

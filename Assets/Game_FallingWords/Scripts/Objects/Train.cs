@@ -5,7 +5,7 @@ namespace FallingWords
 {
     namespace Objects
     {
-        public class Train : MonoBehaviour, IDestroy
+        public class Train : MonoBehaviour, IDestroyable
         {
             [SerializeField] int speed;
 

@@ -8,6 +8,7 @@ namespace SpaceShooter
     {
         public class PlayerMovementManager : MonoBehaviour
         {
+            public bool canMove { get; set; } = false;
             [SerializeField] 
             private int speed;
 
@@ -16,26 +17,27 @@ namespace SpaceShooter
 
             private Rigidbody2D rigidBody;
 
-            private AnimationManager animationManager;
+           // private AnimationManager animationManager;
 
             private void Awake()
             {
                 rigidBody = GetComponent<Rigidbody2D>();
-                animationManager = GetComponent<AnimationManager>();
+                //animationManager = GetComponent<AnimationManager>();
             }
 
             private void Update()
             {
-                Vector2 direction = controller.Direction;
-
-                if (direction != Vector2.zero)
+                if (canMove)
+                {
+                    Vector2 direction = controller.Direction;
                     Move(direction);
+                }
             }
 
             public void Move(Vector2 direction)
             {
                 rigidBody.AddForce(direction * speed);
-                animationManager.MoveAnim(direction.y);
+                //animationManager.MoveAnim(direction.y);
             }
         }
     }
