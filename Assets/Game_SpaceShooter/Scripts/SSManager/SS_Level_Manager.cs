@@ -20,6 +20,9 @@ namespace SpaceShooter
 
             private int currentDead = 0;
 
+            private int amountNeeded;
+            private int killed;
+
             //Pool object
             [SerializeField] private Enemy enemyPf;
             [SerializeField] private Queue<Enemy> enemies = new Queue<Enemy>();
@@ -34,18 +37,26 @@ namespace SpaceShooter
 
             private void Start()
             {
-                StartCoroutine(StartLevel(0, 3, 3, 3, WordOption.Synnonym));    
+                StartCoroutine(StartLevel(0, 3, 2, 1, 3, WordOption.Synnonym));    
             }
 
-            public IEnumerator StartLevel(int level, int enemyAmount, int turnAmount, int wrongInOne, WordOption option)
+            public void AddWrongWord(string word, bool match)
+            {
+                print(word);
+                reviewWords.Enqueue(new Word_Check(word, match));
+            }
+
+            public IEnumerator StartLevel(int level, int enemyAmount, int amountNeeded,int turnAmount, int wrongInOne, WordOption option)
             {
                 this.enemyAmount = enemyAmount;
                 this.turnAmount = turnAmount;
                 this.wrongInOne = wrongInOne;
+                this.amountNeeded = amountNeeded;
                 this.option = option;
+
                 currentLevel = level;
                 currentDead = 0;
-                currentStars = 3;
+                killed = 0;
 
                 if (currentLevel == 0 && guide)
                 {
@@ -55,7 +66,9 @@ namespace SpaceShooter
 
                 player.SetBattle(ChooseWordsRandom(), enemyAmount);
 
-                player.OnDead += () => HandleEnding(false);
+                player.OnDead += () => HandleEnding();
+
+                player.OnOutOfBullet += ActiveNewEnemies;
 
                 InitializeEnemies();
 
@@ -82,11 +95,9 @@ namespace SpaceShooter
                     //send player current words
                     var enemy = Instantiate(this.enemyPf, new Vector2(-10f, -10f), Quaternion.identity);
 
-                    destroyers.Enqueue(enemy.GetComponent<IDestroyable>());
+                    enemy.Setup(keys[i], wrongInOne);
 
-                    enemy.Setup(keys[i], wrongInOne, player);
-
-                    enemy.OnDead += (sA) =>
+                    enemy.OnDead += (sA, playerKill) =>
                     {
                         currentDead++;
 
@@ -94,22 +105,13 @@ namespace SpaceShooter
                             ActiveNewEnemies();
                         else
                             player.RemoveAOption(sA);
-                        
+
+                        if (playerKill)
+                            killed++;
                     };
 
-                    enemy.OnWrong += (match, word) =>
-                    {
-                        if (!match)
-                        {
-                            currentStars--;
-                            if (currentStars < 0)
-                                currentStars = 0; //Can't be less than 0
-
-                            uiManager.ShowCurrentStars(currentStars);
-                        }
-
-                        reviewWords.Enqueue(new Word_Check(word, match));
-                    };
+                    //Take wrong words
+                    enemy.OnWrong += (match, word) => reviewWords.Enqueue(new Word_Check(word, match));
 
                     enemies.Enqueue(enemy);
                 }
@@ -117,6 +119,15 @@ namespace SpaceShooter
 
             public void ActiveNewEnemies()
             {
+                if (enemies.Count <= 0)
+                {
+                    HandleEnding();
+                    return;
+                }
+
+                while (destroyers.Count > 0)
+                    destroyers.Dequeue().DoDestroy();
+
                 int amount = enemyAmount / turnAmount;
 
                 string[] newKeys = new string[amount];
@@ -126,13 +137,9 @@ namespace SpaceShooter
                     if (enemies.Count > 0)
                     {
                         var enemy = enemies.Dequeue();
+                        destroyers.Enqueue(enemy.GetComponent<IDestroyable>());
                         enemy.gameObject.SetActive(true);
                         newKeys[i] = enemy.contain;
-                    }
-                    else
-                    {
-                        HandleEnding(true);
-                        return;
                     }
                 }
                 player.SetKeys(newKeys);
@@ -144,36 +151,50 @@ namespace SpaceShooter
 
                 keys.Clear();
 
-                StartCoroutine(StartLevel(currentLevel, enemyAmount, turnAmount, wrongInOne, option));
+                StartCoroutine(StartLevel(currentLevel, amountNeeded,enemyAmount, turnAmount, wrongInOne, option));
             }
 
-            public void HandleEnding(bool win)
+            public void HandleEnding()
             {
+                bool win = killed >= amountNeeded;
+
                 if (win)
                     AudioSource.PlayClipAtPoint(winSound, Vector3.zero, Manager.GameManager.volumn);
                 else
                     AudioSource.PlayClipAtPoint(loseSound, Vector3.zero, Manager.GameManager.volumn);
 
-                while (destroyers.Count > 0) //Clear words and train
+                while (destroyers.Count > 0)
                     destroyers.Dequeue().DoDestroy();
 
                 enemies.Clear();
 
-                uiManager.SetupEnding(win, currentStars, reviewWords);
+                int star;
+                if (win)
+                    star = 3 - (amountNeeded - killed);
+                else
+                    star = 0;
+
+                uiManager.SetupEnding(win, star, reviewWords);
             }
 
             public override void HandleBackToMenu(bool nextLevel)
             {
                 base.HandleBackToMenu(nextLevel);
 
-                bool win = currentDead >= enemyAmount;
+                bool win = killed >= amountNeeded;
 
-                OnEndLevel?.Invoke(win, currentLevel, currentStars, nextLevel);
+                int star;
+                if (win)
+                    star = 3 - (amountNeeded - killed);
+                else
+                    star = 0;
+
+                OnEndLevel?.Invoke(win, currentLevel, star, nextLevel);
             }
 
             public void QuickLosing()
             {
-                currentStars = 0;
+                killed = 0;
                 currentDead = 0;
                 StopAllCoroutines();
             }

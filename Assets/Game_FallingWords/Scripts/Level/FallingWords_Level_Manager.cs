@@ -12,7 +12,14 @@ namespace FallingWords
         {
             public class FallingWords_Level_Manager : Manager.LevelManager_BaseClass
             {
-                [SerializeField] private int missedTime = 3;
+                protected int missedTime = 3;
+
+                protected int countWrong = 0;
+
+                protected int subtractStar;
+
+                protected int currentStars = 3;
+
 
                 [SerializeField] private int maxWordsInTopic;
 

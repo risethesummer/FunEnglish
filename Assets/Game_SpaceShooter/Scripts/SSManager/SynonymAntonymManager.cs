@@ -63,7 +63,6 @@ namespace SpaceShooter
                     {
                         antonyms.Add(head, new List<Word_SymAnt>());
                         antonymKeys.Add(head);
-                        print(head);
                     }
 
                     var temp = antonyms[head];

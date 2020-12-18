@@ -21,9 +21,15 @@ namespace SpaceShooter
                     if (collision.TryGetComponent<IDamagable>(out var e))
                     {
                         e.TakenDamage(word);
-                        DoDestroy();
+                        base.DoDestroy();
                     }
                 }
+            }
+
+            public string DoDestroyWithWord()
+            {
+                base.DoDestroy();
+                return word.word;
             }
         }
     }

@@ -26956,7 +26956,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -28236,7 +28236,6 @@ MonoBehaviour:
   loseSound: {fileID: 8300000, guid: 7ee2098a6141c484d97cbc07f8b726b0, type: 3}
   guide: {fileID: 3861131}
   uiManager: {fileID: 770215622}
-  missedTime: 3
   maxWordsInTopic: 0
   boxes:
   - {fileID: 665561901}

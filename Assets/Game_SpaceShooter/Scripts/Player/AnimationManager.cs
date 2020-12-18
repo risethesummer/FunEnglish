@@ -25,7 +25,7 @@ namespace SpaceShooter
 
             public float DestroyAnim()
             {
-                animator.Play("Destroy");
+                animator.Play("Dead");
                 return deadLength;
             }
         }

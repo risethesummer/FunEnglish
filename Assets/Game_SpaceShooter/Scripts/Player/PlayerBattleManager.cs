@@ -27,7 +27,7 @@ namespace SpaceShooter
             private readonly List<PlayerBullet> bullets = new List<PlayerBullet>();
 
             public event System.Action OnDead;
-
+            public event System.Action OnOutOfBullet;
 
             //Count input touches
             private int countTouches;
@@ -38,7 +38,7 @@ namespace SpaceShooter
             private Word_SymAnt currentChose;
             [SerializeField] private TextMeshProUGUI wordContain;
 
-            [SerializeField] private UnityEngine.UI.Slider healthBar;
+            [SerializeField] private UnityEngine.UI.Image healthBar;
 
             private void Awake()
             {
@@ -57,15 +57,16 @@ namespace SpaceShooter
                 this.wordsList = words;
                 this.currentHealth = health;
                 this.maxHealth = health;
-                healthBar.value = 1;
+                healthBar.fillAmount = 1;
                 GetComponent<PlayerMovementManager>().canMove = true;
+                canFire = true;
             }
 
             public void SetKeys(string[] keys)
             {
                 currentSynAntCanChoose.Clear();
                 foreach (var key in keys)
-                    currentSynAntCanChoose.Add(new Word_Check(key, false));
+                    currentSynAntCanChoose.Add(new Word_Check(key, true));
                 ChooseForFire();
             }
 
@@ -83,18 +84,21 @@ namespace SpaceShooter
 
             public void ChooseForFire()
             {
-                bool isFound = false;
-                for (int i = 0; i < currentSynAntCanChoose.Count; i++)
+                bool check = false;
+                foreach (var choice in currentSynAntCanChoose)
                 {
-                    if (currentSynAntCanChoose[i].right && wordsList[currentSynAntCanChoose[i].word].Count > 0)
+                    if (choice.right)
                     {
-                        isFound = true;
+                        check = true;
                         break;
                     }
                 }
 
-                if (!isFound)
+                if (!check)
+                {
+                    OnOutOfBullet?.Invoke();
                     return;
+                }
 
                 int temp;
                 Word_Check tempWord;
@@ -103,11 +107,19 @@ namespace SpaceShooter
                     temp = Random.Range(0, currentSynAntCanChoose.Count); //Choose random to initial a bullet
                     tempWord = currentSynAntCanChoose[temp];
 
-                } while (!tempWord.right || wordsList[tempWord.word].Count <= 0); //While choose an topic is empty
+                } while (!tempWord.right); //While choose an topic is empty
 
-                currentChose = wordsList[tempWord.word].Dequeue();
-
-                wordContain.SetText(currentChose.word);
+                if (wordsList[tempWord.word].Count > 0)
+                {
+                    currentChose = wordsList[tempWord.word].Dequeue();
+                    wordContain.SetText(currentChose.word);
+                }
+                else
+                {
+                    //Rechoose
+                    tempWord.right = false;
+                    ChooseForFire();
+                }
             }
 
             //Remove to can't choose it anymore in the function above
@@ -160,11 +172,12 @@ namespace SpaceShooter
                 currentHealth -= damamge;
 
                 if (currentHealth <= 0)
-                    HandleDying();
-                else
                 {
-                    healthBar.value = (float)currentHealth / (float)maxHealth;
+                    currentHealth = 0;
+                    HandleDying();
                 }
+                
+                healthBar.fillAmount = (float)currentHealth / (float)maxHealth;
             }
 
             public void HandleDying()

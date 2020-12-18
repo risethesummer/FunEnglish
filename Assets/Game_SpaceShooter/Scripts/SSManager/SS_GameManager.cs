@@ -15,13 +15,14 @@ namespace SpaceShooter
 
             public struct Level
             {
-                public int enemyAmount, turnAmount, wrongInOne;
+                public int enemyAmount, neededAmount, turnAmount, wrongInOne;
 
                 public WordOption option;
 
-                public Level(int eAmount, int tAmount, int w, WordOption o)
+                public Level(int eAmount, int nAmount, int tAmount, int w, WordOption o)
                 {
                     this.enemyAmount = eAmount;
+                    this.neededAmount = nAmount;
                     this.turnAmount = tAmount;
                     this.wrongInOne = w;
                     this.option = o;
@@ -38,7 +39,7 @@ namespace SpaceShooter
 
                 levelManager.OnEndLevel += HandleEndgame;
 
-                StartCoroutine(levelManager.StartLevel(level, current.enemyAmount, current.turnAmount, current.wrongInOne, current.option));
+                StartCoroutine(levelManager.StartLevel(level, current.enemyAmount, current.neededAmount, current.turnAmount, current.wrongInOne, current.option));
             }
 
             public override IEnumerator LoadLevel(int level)

@@ -130,12 +130,12 @@ namespace Manager
         {
             if (win)
             {
-                winLoseText.SetText("Winner honda X");
+                winLoseText.SetText("Winn!!!!!!");
                 nextLevel.gameObject.SetActive(true);
             }
             else
             {
-                winLoseText.SetText("Lmfao loser");
+                winLoseText.SetText("Lose.....");
                 nextLevel.gameObject.SetActive(false);
             }
         }

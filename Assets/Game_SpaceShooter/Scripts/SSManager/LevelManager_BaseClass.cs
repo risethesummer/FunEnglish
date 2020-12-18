@@ -6,13 +6,7 @@ namespace Manager
     public class LevelManager_BaseClass : MonoBehaviour
     {
         [SerializeField] protected int currentLevel;
-
-        protected int countWrong = 0;
-
-        protected int subtractStar;
-
-        protected int currentStars = 3;
-
+     
 
         [SerializeField] protected AudioClip winSound;
 

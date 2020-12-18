@@ -9,8 +9,6 @@ namespace SpaceShooter
     {
         public class Enemy : MonoBehaviour, IDamagable, IDestroyable
         {
-            private PlayerBattleManager target;
-
             const int minX = -4;
             const int maxX = 4;
             const int minY = 0;
@@ -22,7 +20,7 @@ namespace SpaceShooter
 
             private int countWrong = 0;
 
-            public event System.Action<string> OnDead;
+            public event System.Action<string, bool> OnDead;
 
             public event System.Action<bool, string> OnWrong;
 
@@ -56,7 +54,7 @@ namespace SpaceShooter
             {
                 gameObject.SetActive(false);
 
-                cooldown = new WaitForSeconds(1.5f);
+                cooldown = new WaitForSeconds(2.5f);
 
                 cooldownMove = new WaitForSeconds(1f);
 
@@ -124,11 +122,10 @@ namespace SpaceShooter
                 canFire = true;
             }
 
-            public void Setup(string contain, int maxWrong, PlayerBattleManager target)
+            public void Setup(string contain, int maxWrong)
             {
                 this.contain = contain;
                 this.maxWrong = maxWrong;
-                this.target = target;
                 textContain.SetText(contain);
             }
 
@@ -139,12 +136,12 @@ namespace SpaceShooter
                 OnWrong?.Invoke(check, word_SymAnt.word);
 
                 if (check)
-                    StartCoroutine(DoDestroyWithAnim());
+                    StartCoroutine(DoDestroyWithAnim(true));
                 else
                 {
                     countWrong++;
                     if (countWrong >= maxWrong)
-                         Move(target.transform.position, 20);
+                        StartCoroutine(DoDestroyWithAnim(false));
                 }
             }
 
@@ -154,11 +151,11 @@ namespace SpaceShooter
                 transform.Translate((direction - this.transform.position) * realSpeed);
             }
 
-            private IEnumerator DoDestroyWithAnim()
+            private IEnumerator DoDestroyWithAnim(bool playerKillOrNot)
             {
+                OnDead?.Invoke(contain, playerKillOrNot);
                 yield return new WaitForSeconds(animator.DestroyAnim());
-                OnDead?.Invoke(contain);
-                Destroy(this.gameObject);
+                this.gameObject.SetActive(false);
             }
 
             private void OnTriggerEnter2D(Collider2D collision)
@@ -167,15 +164,15 @@ namespace SpaceShooter
                 {
                     if (collision.TryGetComponent<PlayerBattleManager>(out var player))
                     {
-                        player.TakenDamage(3);
-                        StartCoroutine(DoDestroyWithAnim());
+                        player.TakenDamage(1);
+                        StartCoroutine(DoDestroyWithAnim(false));
                     }
                 }
             }
 
             public void DoDestroy()
             {
-                Destroy(this.gameObject);
+                this.gameObject.SetActive(false);
             }
         }
     }
