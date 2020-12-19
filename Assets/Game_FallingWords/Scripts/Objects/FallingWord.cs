@@ -26,23 +26,12 @@ namespace FallingWords
 
             [SerializeField] private int speedHor;
 
-            [SerializeField] private AudioClip rightSound;
-
-            [SerializeField] private AudioClip wrongSound;
-
-            [SerializeField] private AudioClip switchSound;
-
             public int whichBox { get; set; }
 
             private void Update()
             {
                 if (active)
-                {
-                    InputMoveWordToLeft();
-                    InputMoveWordToRight();
-                    InputToMoveQuick();
                     Move();
-                }
             }
 
             public void SetUp(Word word, float[] positions)
@@ -80,37 +69,26 @@ namespace FallingWords
 
             public void InputMoveWordToRight()
             {
-                if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-                {
+                //if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+              //  {
                     if (currentWordPos < posToMove.Length - 1)
-                    {
                         currentWordPos++;
-                        AudioSource.PlayClipAtPoint(switchSound, Vector3.zero, Manager.GameManager.volumn);
-                    }
-                }
+              //  }
             }
 
             public void InputMoveWordToLeft()
             {
 
-                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-                {
                     if (currentWordPos > 0)
-                    {
                         currentWordPos--;
-                        AudioSource.PlayClipAtPoint(switchSound, Vector3.zero, Manager.GameManager.volumn);
-
-                    }
-                }
             }
 
             public void InputToMoveQuick()
             {
-                if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -1000f), ForceMode2D.Force);
-                    AudioSource.PlayClipAtPoint(switchSound, Vector3.zero, Manager.GameManager.volumn);
-                }
+                var rigid = GetComponent<Rigidbody2D>();
+
+                if (rigid.velocity.y > -20f)
+                    rigid.AddForce(new Vector2(0, -500f), ForceMode2D.Force);
             }
 
             public void Stop()
@@ -141,6 +119,8 @@ namespace FallingWords
 
                         if (collision.TryGetComponent<Rigidbody2D>(out var rigid))
                         {
+                            var newPos =  new Vector3 (rigid.transform.position.x, this.transform.position.y);
+                            this.transform.position = newPos;
                             gameObject.AddComponent<FixedJoint2D>().connectedBody = rigid;
                         }
                     }
@@ -150,15 +130,9 @@ namespace FallingWords
             public void HandleMatching(bool matched)
             {
                 if (matched)
-                {
                     wordContainter.color = Color.green;
-                    AudioSource.PlayClipAtPoint(rightSound, Vector3.zero, Manager.GameManager.volumn);
-                }
                 else
-                {
                     wordContainter.color = Color.red;
-                    AudioSource.PlayClipAtPoint(wrongSound, Vector3.zero, Manager.GameManager.volumn);
-                }
             }
 
             public void DoDestroy()

@@ -1,9 +1,9 @@
 abnormality,noun,hard
 acne,noun,hard
 aggressive,adjective,hard
-AIDS,noun,medium
+aids,noun,medium
 ailment,noun,medium
-Alzheimer’s,noun,hard
+alzheimer’s,noun,hard
 anthrax,noun,hard
 appendicitis,noun,hard
 arthritis,noun,hard
@@ -36,8 +36,8 @@ corona,noun,hard
 coronary,adjective,hard
 coronavirus,noun,medium
 cough,noun,easy
-Covid,noun,medium
-Covid-19,noun,medium
+covid,noun,medium
+covid-19,noun,medium
 croup,noun,hard
 cyst,noun,hard
 diabetes,noun,medium
@@ -50,7 +50,7 @@ disorder,noun,medium
 dysentery,noun,hard
 dyspepsia,noun,hard
 earache,noun,easy
-Ebola,noun,hard
+ebola,noun,hard
 eclampsia,noun,hard
 eczema,noun,hard
 epidemic,noun,medium
@@ -73,7 +73,7 @@ heatstroke,noun,hard
 hemophilia,noun,hard
 hepatitis,noun,hard
 hereditary,adjective,hard
-HIV,noun,medium
+hiv,noun,medium
 hypochondriac,noun,hard
 incurable,adjective,hard
 indigestion,noun,hard
@@ -91,7 +91,7 @@ measles,noun,medium
 meningitis,noun,hard
 miscarriage,noun,hard
 mumps,noun,hard
-nCoV,noun,hard
+ncov,noun,hard
 non-malignant,adjective,hard
 notifiable,adjective,hard
 orthorexia,noun,hard
@@ -106,10 +106,10 @@ polio,noun,hard
 rabies,noun,hard
 rheumatism,noun,hard
 rickets,noun,hard
-RSI,noun,hard
+rsi,noun,hard
 rubella,noun,hard
 salmonella,noun,hard
-SARS-CoV-2,noun,hard
+sars-cov-2,noun,hard
 scrapie,noun,hard
 seasickness,noun,medium
 shock,noun,medium

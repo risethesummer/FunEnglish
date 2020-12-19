@@ -1,6 +1,6 @@
 ballet,noun,medium
 benefit,noun,hard
-Broadway,noun,medium
+broadway,noun,medium
 comedy,noun,easy
 dramatic,adjective,medium
 farce,noun,hard
@@ -8,7 +8,7 @@ kabuki,noun,hard
 masque,noun,hard
 melodrama,noun,hard
 mime,noun,hard
-off-Broadway,adjective,hard
+off-broadway,adjective,hard
 pantomime,noun,hard
 play,noun,easy
 potboiler,noun,hard

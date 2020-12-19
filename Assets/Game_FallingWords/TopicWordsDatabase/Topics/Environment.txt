@@ -17,7 +17,7 @@ cable,noun,medium
 carbon,noun,medium
 carbon-neutral,adjective,medium
 cataclysm,noun,hard
-CFC,noun,hard
+cfc,noun,hard
 clean,adjective,easy
 clean-up,noun,medium
 climate,noun,easy
@@ -75,7 +75,7 @@ frack,verb,hard
 fracking,noun,hard
 fuel,noun,easy
 fumes,noun,medium
-Gaia,noun,hard
+gaia,noun,hard
 garbage,noun,easy
 gas,noun,easy
 generate,verb,medium
@@ -109,7 +109,7 @@ oil,noun,easy
 ozone-friendly,adjective,hard
 particulate,adjective,hard
 particulate,noun,hard
-PET,noun,hard
+pet,noun,hard
 petrol,noun,easy
 plastic,noun,easy
 plume,noun,hard

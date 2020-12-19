@@ -1,7 +1,7 @@
 aboriginal,adjective,hard
 ancestor,noun,medium
 ancestry,noun,medium
-Anglo-Saxon,noun,medium
+anglo-saxon,noun,medium
 archer,noun,hard
 aristocracy,noun,medium
 aristocrat,noun,medium

@@ -23,7 +23,7 @@ break,verb,medium
 breeze,noun,medium
 breezy,adjective,medium
 calm,adjective,easy
-Celsius,adjective,medium
+celsius,adjective,medium
 centigrade,noun,medium
 centigrade,adjective,medium
 change,verb,easy
@@ -69,7 +69,7 @@ east,adjective,easy
 easterly,adjective,hard
 easterly,noun,hard
 element,noun,hard
-Fahrenheit,noun,medium
+fahrenheit,noun,medium
 fair,adjective,medium
 fall,noun,easy
 favourable,adjective,medium

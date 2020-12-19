@@ -9,16 +9,19 @@ namespace SpaceShooter
     {
         public class Enemy : MonoBehaviour, IDamagable, IDestroyable
         {
-            const int minX = -4;
-            const int maxX = 4;
-            const int minY = 0;
-            const int maxY = 12;
+            [SerializeField] private float minX = -4;
+            [SerializeField] private float maxX = 4;
+            [SerializeField] private float minY = 0;
+            [SerializeField] private float maxY = 12;
 
+            public event System.Action OnFireSound;
             public string contain { get; private set; }
 
-            private int maxWrong;
+            private int health;
 
-            private int countWrong = 0;
+            private int maxHealth;
+
+            [SerializeField] private UnityEngine.UI.Image healthBar;
 
             public event System.Action<string, bool> OnDead;
 
@@ -47,16 +50,30 @@ namespace SpaceShooter
 
             private void OnEnable()
             {
-                this.transform.position = new Vector3(4, 12);
+                isActive = true;
+                this.transform.position = new Vector3(Random.Range(minX, maxX), maxY);
             }
 
+            public void Setup(string contain, int maxHealth)
+            {
+                this.contain = contain;
+                this.health = maxHealth;
+                this.maxHealth = maxHealth;
+                ChangeHealth();
+                textContain.SetText(contain);
+            }
+
+            public void ChangeHealth()
+            {
+                healthBar.fillAmount = (float)health / maxHealth;
+            }
             private void Awake()
             {
                 gameObject.SetActive(false);
 
-                cooldown = new WaitForSeconds(2.5f);
+                cooldown = new WaitForSeconds(1.5f);
 
-                cooldownMove = new WaitForSeconds(1f);
+                cooldownMove = new WaitForSeconds(0.5f);
 
                 for (int i = 0; i < amount; i++)
                 {
@@ -76,20 +93,19 @@ namespace SpaceShooter
             {
                 if (canFire)
                     Fire();
-                //Move();
             }
 
             IEnumerator Move()
             {
                 if (this.transform.position != targetPos)
                 {
-                    transform.position = Vector2.MoveTowards(this.transform.position, targetPos, 1f * Time.deltaTime);
+                    transform.position = Vector2.MoveTowards(this.transform.position, targetPos, 4f * Time.deltaTime);
                     yield return null;
                     StartCoroutine(Move());
                 }
                 else
                 {
-                    targetPos = new Vector2(Random.Range((float)minX, maxX), Random.Range((float)minY, maxY));
+                    targetPos = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
                     yield return cooldownMove;
                     StartCoroutine(Move());
                 }
@@ -98,6 +114,8 @@ namespace SpaceShooter
             public void Fire()
             {
                 canFire = false;
+
+                OnFireSound?.Invoke();
 
                 foreach (var b in bullets)
                 {
@@ -122,26 +140,23 @@ namespace SpaceShooter
                 canFire = true;
             }
 
-            public void Setup(string contain, int maxWrong)
-            {
-                this.contain = contain;
-                this.maxWrong = maxWrong;
-                textContain.SetText(contain);
-            }
 
             public void TakenDamage(Word_SymAnt word_SymAnt)
             {
-                bool check = word_SymAnt.synAnt == contain;
-
-                OnWrong?.Invoke(check, word_SymAnt.word);
-
-                if (check)
-                    StartCoroutine(DoDestroyWithAnim(true));
-                else
+                if (isActive)
                 {
-                    countWrong++;
-                    if (countWrong >= maxWrong)
-                        StartCoroutine(DoDestroyWithAnim(false));
+                    bool check = word_SymAnt.synAnt == contain;
+
+                    OnWrong?.Invoke(check, word_SymAnt.word);
+
+                    if (check)
+                    {
+                        health--;
+                        if (health <= 0)
+                            StartCoroutine(DoDestroyWithAnim(true));
+                        else
+                            ChangeHealth();
+                    }
                 }
             }
 
@@ -153,6 +168,7 @@ namespace SpaceShooter
 
             private IEnumerator DoDestroyWithAnim(bool playerKillOrNot)
             {
+                isActive = false;
                 OnDead?.Invoke(contain, playerKillOrNot);
                 yield return new WaitForSeconds(animator.DestroyAnim());
                 this.gameObject.SetActive(false);
@@ -160,10 +176,11 @@ namespace SpaceShooter
 
             private void OnTriggerEnter2D(Collider2D collision)
             {
-                if (collision)
+                if (collision && isActive)
                 {
                     if (collision.TryGetComponent<PlayerBattleManager>(out var player))
                     {
+                        isActive = false;
                         player.TakenDamage(1);
                         StartCoroutine(DoDestroyWithAnim(false));
                     }
@@ -172,7 +189,17 @@ namespace SpaceShooter
 
             public void DoDestroy()
             {
-                this.gameObject.SetActive(false);
+                if (this.gameObject.activeInHierarchy)
+                    StartCoroutine(DoDestroyWithAnim(false));
+            }
+
+            private void OnDestroy()
+            {
+                foreach (var bullet in bullets)
+                {
+                    if (bullet != null)
+                        Destroy(bullet.gameObject);
+                }
             }
         }
     }

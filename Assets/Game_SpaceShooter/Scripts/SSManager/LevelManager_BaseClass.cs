@@ -3,41 +3,28 @@ using UnityEngine;
 
 namespace Manager
 {
-    public class LevelManager_BaseClass : MonoBehaviour
+    public abstract class LevelManager_BaseClass : MonoBehaviour
     {
         [SerializeField] protected int currentLevel;
-     
 
+        [SerializeField]
+        protected AudioSource source;
+        [SerializeField]
+        protected AudioClip rightSound;
+        [SerializeField]
+        protected AudioClip wrongSound;
         [SerializeField] protected AudioClip winSound;
 
         [SerializeField] protected AudioClip loseSound;
 
-        [SerializeField] protected GameObject guide;
-
-        [SerializeField] protected Queue<IDestroyable> destroyers = new Queue<IDestroyable>(); //Use in replay
-
-        [SerializeField] protected UIManager_Level uiManager;
 
         protected readonly Queue<Word_Check> reviewWords = new Queue<Word_Check>();
 
         protected WaitForSeconds waitCor;
 
-        public virtual void HandleReplay()
-        {
-            print("replay");
-            while (destroyers.Count > 0) //Clear words and train
-                destroyers.Dequeue().DoDestroy();
+        public abstract void HandleReplay();
 
-            uiManager.ResetStart();
-            reviewWords.Clear();
-            uiManager.Hide();
-        }
-
-        public virtual void HandleBackToMenu(bool nextLevel)
-        {
-            uiManager.Hide(); //UI of current level
-        }
-
+        public abstract void HandleBackToMenu(bool nextLevel);
     }
 
 }

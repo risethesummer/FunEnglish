@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FallingWords/FW_Level2.unity
     guid: d0f1aed26073856478d4d1cf57adc775
+  - enabled: 1
+    path: Assets/Scenes/SpaceShooter/SpaceShooter.unity
+    guid: 96ed8b8ac31ebbe4d9994f2eb177803c
   m_configObjects: {}

@@ -13,8 +13,6 @@ namespace Manager
 
         [SerializeField] private Image[] stars;
 
-        [SerializeField] private Image[] starsCurrentShow;
-
         [SerializeField] TextMeshProUGUI wrongWords;
 
         [SerializeField] TextMeshProUGUI winLoseText;
@@ -23,7 +21,6 @@ namespace Manager
         [SerializeField] private Button replay;
         [SerializeField] private Button nextLevel;
 
-        [SerializeField] private TextMeshProUGUI countWrongText;
 
         private const string oxfordHeadLink = "https://www.oxfordlearnersdictionaries.com/definition/english/";
 
@@ -59,12 +56,6 @@ namespace Manager
             });
         }
 
-        public void CountWrong(int remains)
-        {
-            if (remains >= 0)
-                countWrongText.SetText(remains.ToString());
-        }
-
         public void SetupEnding(bool win, int stars, Queue<Word_Check> wrongWords)
         {
             SetStar(stars);
@@ -73,21 +64,6 @@ namespace Manager
             Appear();
         }
 
-        public void ShowCurrentStars(int current)
-        {
-            for (int i = current; i < stars.Length; i++) //Grey out the out range star
-            {
-                starsCurrentShow[i].color = new Color(1, 1, 1, 0.5f);
-            }
-        }
-
-        public void ResetStart()
-        {
-            for (int i = 0; i < stars.Length; i++)
-            {
-                starsCurrentShow[i].color = Color.yellow;
-            }
-        }
 
         public void SetStar(int stars)
         {

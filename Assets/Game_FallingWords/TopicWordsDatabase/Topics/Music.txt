@@ -78,7 +78,7 @@ sousaphone,noun,hard
 spinet,noun,hard
 string,noun,medium
 string,adjective,medium
-Stylophone™,noun,hard
+stylophone™,noun,hard
 synth,noun,hard
 synthesizer,noun,hard
 tabor,noun,hard

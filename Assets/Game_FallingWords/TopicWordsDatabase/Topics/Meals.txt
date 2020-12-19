@@ -4,7 +4,7 @@ banquet,noun,medium
 breakfast,noun,easy
 brunch,noun,medium
 buffet,noun,medium
-Christmas,noun,easy
+christmas,noun,easy
 course,noun,easy
 cuisine,noun,medium
 dessert,noun,easy

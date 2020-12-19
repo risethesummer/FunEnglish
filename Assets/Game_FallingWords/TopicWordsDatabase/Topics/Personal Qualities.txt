@@ -311,7 +311,7 @@ genuine,adjective,medium
 get-up-and-go,noun,hard
 gibe,noun,hard
 goad,verb,hard
-God-fearing,adjective,hard
+god-fearing,adjective,hard
 godly,adjective,hard
 good,adjective,easy
 good-for-nothing,adjective,hard

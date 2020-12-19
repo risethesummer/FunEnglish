@@ -10,7 +10,7 @@ namespace SpaceShooter
 
             private void OnTriggerEnter2D(Collider2D collision)
             {
-                print("Collide");
+
                 if (collision)
                 {
                     if (collision.TryGetComponent<PlayerBullet>(out var des))

@@ -14,13 +14,13 @@ dogie,noun,hard
 ewe,noun,hard
 filly,noun,hard
 foal,noun,medium
-Friesian,noun,hard
+friesian,noun,hard
 gelding,noun,hard
 goat,noun,easy
-Guernsey,noun,hard
+guernsey,noun,hard
 heifer,noun,hard
 hog,noun,hard
-Holstein,noun,hard
+holstein,noun,hard
 horse,noun,easy
 jersey,noun,hard
 kid,noun,hard

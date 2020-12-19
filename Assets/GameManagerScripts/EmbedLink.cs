@@ -4,8 +4,6 @@ using UnityEngine.EventSystems;
 
 public class EmbedLink : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] private TextMeshProUGUI text;
-
     public void OnPointerClick(PointerEventData eventData)
     {
         TMP_Text pTextMeshPro = GetComponent<TMP_Text>();

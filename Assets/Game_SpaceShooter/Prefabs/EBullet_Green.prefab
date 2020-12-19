@@ -75,7 +75,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 21300000, guid: 6bb8238c5d1d39f4795e6ad2916824fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.1875, y: 0.5625}
   m_AdaptiveModeThreshold: 0.5
@@ -96,9 +96,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010533452, y: 0.58878696}
+  m_Offset: {x: -0.010533452, y: -0.5518782}
   serializedVersion: 2
-  m_Radius: 0.25897765
+  m_Radius: 0.315076
 --- !u!114 &4581205707445284610
 MonoBehaviour:
   m_ObjectHideFlags: 0

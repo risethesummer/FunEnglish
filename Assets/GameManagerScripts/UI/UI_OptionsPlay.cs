@@ -32,19 +32,21 @@ namespace Manager
                 });
                 topicUIManager.OnBack += Appear;
 
-                //synAntButton.onClick.AddListener(() =>
-                //{
-                //    if (canInteract)
-                //    {
-                        
-                //    }
-                //});
+                synAntButton.onClick.AddListener(() =>
+                {
+                    if (canInteract)
+                    {
+                        Hide();
+                        synAntUIManager.Appear();
+                    }
+                });
+                synAntUIManager.OnBack += Appear;
 
                 //picturesButton.onClick.AddListener(() =>
                 //{
                 //    if (canInteract)
                 //    {
-                      
+
                 //    }
                 //});
 

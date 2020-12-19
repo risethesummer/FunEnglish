@@ -21,7 +21,6 @@ namespace Manager
 
         public static float volumn = 1f;
 
-
         private void Awake()
         {
             if (this)

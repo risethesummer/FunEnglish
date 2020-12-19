@@ -12,7 +12,7 @@ namespace SpaceShooter
             //Health
             [SerializeField]
             private int maxHealth;
-            private int currentHealth;
+            [SerializeField] private int currentHealth;
 
             //Cooldown 
             [SerializeField]
@@ -27,10 +27,11 @@ namespace SpaceShooter
             private readonly List<PlayerBullet> bullets = new List<PlayerBullet>();
 
             public event System.Action OnDead;
-            public event System.Action OnOutOfBullet;
-
+            public event System.Action<string> OnOutOfBullet;
+            public event System.Action OnFireSound;
+            public event System.Action OnDamageSound;
             //Count input touches
-            private int countTouches;
+            [SerializeField] private UnityEngine.UI.Button fireButton;
 
             private Dictionary<string, Queue<Word_SymAnt>> wordsList = new Dictionary<string, Queue<Word_SymAnt>>();
 
@@ -40,25 +41,47 @@ namespace SpaceShooter
 
             [SerializeField] private UnityEngine.UI.Image healthBar;
 
+            private PlayerMovementManager movement;
+
+            public void EndBattle()
+            {
+                movement.canMove = false;
+                canFire = false;
+                OnDead = null;
+                OnOutOfBullet = null;
+                OnFireSound = null;
+                OnDamageSound = null;
+            }
+
             private void Awake()
             {
-                waitDelay = new WaitForSeconds(timeDelay);
-                currentHealth = maxHealth;
+                movement = GetComponent<PlayerMovementManager>();
 
+                fireButton.onClick.AddListener(Fire);
+
+                waitDelay = new WaitForSeconds(timeDelay);
+
+                
+            }
+
+            public void SetBattle(Dictionary<string, Queue<Word_SymAnt>> words, int health)
+            {
                 for (int i = 0; i < amountToInit; i++)
                 {
                     var temp = Instantiate(prefab, new Vector3(-10, 10), Quaternion.identity);
                     bullets.Add(temp);
                 }
-            }
 
-            public void SetBattle(Dictionary<string, Queue<Word_SymAnt>> words, int health)
-            {
                 this.wordsList = words;
+
                 this.currentHealth = health;
+
                 this.maxHealth = health;
+
                 healthBar.fillAmount = 1;
-                GetComponent<PlayerMovementManager>().canMove = true;
+
+                movement.canMove = true;
+
                 canFire = true;
             }
 
@@ -70,17 +93,6 @@ namespace SpaceShooter
                 ChooseForFire();
             }
 
-            private void Update()
-            {
-                countTouches = Input.touchCount;
-
-                if (countTouches > 0)
-                {
-                    var touch = Input.GetTouch(countTouches - 1);
-                    if (touch.phase == TouchPhase.Began)
-                        Fire();
-                }
-            }
 
             public void ChooseForFire()
             {
@@ -93,10 +105,12 @@ namespace SpaceShooter
                         break;
                     }
                 }
-
                 if (!check)
                 {
-                    OnOutOfBullet?.Invoke();
+                    currentChose = new Word_SymAnt("", "");
+
+                    wordContain.SetText("");
+
                     return;
                 }
 
@@ -116,8 +130,15 @@ namespace SpaceShooter
                 }
                 else
                 {
-                    //Rechoose
                     tempWord.right = false;
+
+                    currentChose = new Word_SymAnt("", "");
+
+                    wordContain.SetText("");
+
+                    OnOutOfBullet?.Invoke(tempWord.word);
+
+                    //Rechoose
                     ChooseForFire();
                 }
             }
@@ -128,20 +149,23 @@ namespace SpaceShooter
                 for (int i = 0; i < currentSynAntCanChoose.Count; i++)
                 {
                     if (currentSynAntCanChoose[i].word == sA)
-                        currentSynAntCanChoose[i] = new Word_Check(sA, false);
+                    {
+                        currentSynAntCanChoose[i].right = false;
+                    }
                 }
             }
 
             public void Fire()
             {
-                if (canFire)
+                if (canFire && !currentChose.IsNull())
                 {
                     canFire = false;
 
                     foreach (var bullet in bullets)
                     {
-                        if (!bullet.isActive && !currentChose.IsNull())
+                        if (!bullet.isActive)
                         {
+                            OnFireSound?.Invoke();
 
                             bullet.SetPosition(this.transform.position + Vector3.up);
 
@@ -151,7 +175,10 @@ namespace SpaceShooter
 
                             currentChose = new Word_SymAnt("", "");
 
+                            wordContain.SetText("");
+
                             ChooseForFire();
+
                             break;
                         }
                     }
@@ -163,12 +190,12 @@ namespace SpaceShooter
             IEnumerator CoolDownFire()
             {
                 yield return waitDelay;
-
                 canFire = true;
             }
 
             public void TakenDamage(int damamge = 1)
             {
+                OnDamageSound?.Invoke();
                 currentHealth -= damamge;
 
                 if (currentHealth <= 0)
@@ -183,7 +210,7 @@ namespace SpaceShooter
             public void HandleDying()
             {
                 canFire = false;
-                GetComponent<PlayerMovementManager>().canMove = false;
+                movement.canMove = false;
                 OnDead?.Invoke();
             }
         }

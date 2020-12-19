@@ -14,19 +14,20 @@ namespace SpaceShooter
 
             private int turnAmount; //Count how many turns
 
-            private int wrongInOne; //Count wrong times in an object
+            private int health; //Count wrong times in an object
 
             [SerializeField] WordOption option;
 
             private int currentDead = 0;
 
             private int amountNeeded;
+
             private int killed;
 
             //Pool object
-            [SerializeField] private Enemy enemyPf;
+            [SerializeField] private Enemy[] enemyPf;
             [SerializeField] private Queue<Enemy> enemies = new Queue<Enemy>();
-                 
+            [SerializeField] private Queue<Enemy> currentEnemies = new Queue<Enemy>();
             private readonly List<string> keys = new List<string>();
 
             //private readonly Dictionary<string, Queue<Word_SymAnt>> wordsList = new Dictionary<string, Queue<Word_SymAnt>>();
@@ -35,40 +36,51 @@ namespace SpaceShooter
 
             public event System.Action<bool, int, int, bool> OnEndLevel;
 
-            private void Start()
-            {
-                StartCoroutine(StartLevel(0, 3, 2, 1, 3, WordOption.Synnonym));    
-            }
+            [SerializeField] protected SS_Level_UIManager uiManager;
+
+            [SerializeField] private AudioClip fireSound;
+
+            [SerializeField] private AudioClip damageSound;
+            [SerializeField] private AudioClip destroySound;
+
+            [SerializeField] private TextAnimation optionText;
+
+            //private bool isEnd;
+            private bool isEnd;
 
             public void AddWrongWord(string word, bool match)
             {
-                print(word);
                 reviewWords.Enqueue(new Word_Check(word, match));
             }
 
-            public IEnumerator StartLevel(int level, int enemyAmount, int amountNeeded,int turnAmount, int wrongInOne, WordOption option)
+            public IEnumerator StartLevel(int level, int enemyAmount, int amountNeeded,int turnAmount, int health, WordOption option)
             {
                 this.enemyAmount = enemyAmount;
                 this.turnAmount = turnAmount;
-                this.wrongInOne = wrongInOne;
+                this.health = health;
                 this.amountNeeded = amountNeeded;
                 this.option = option;
 
                 currentLevel = level;
                 currentDead = 0;
                 killed = 0;
+                isEnd = false;
 
-                if (currentLevel == 0 && guide)
-                {
-                    guide.SetActive(true);
-                    yield return new WaitWhile(() => guide.activeSelf);
-                }
+                uiManager.ShowCurrentKill(killed, amountNeeded);
+
+                string text = option == WordOption.Synnonym ? "synonym" : "antonym";
+                optionText.gameObject.SetActive(true);
+                optionText.Text(text);
 
                 player.SetBattle(ChooseWordsRandom(), enemyAmount);
 
                 player.OnDead += () => HandleEnding();
 
-                player.OnOutOfBullet += ActiveNewEnemies;
+                player.OnOutOfBullet += OutOffBullet;
+
+                player.OnFireSound += () => source.PlayOneShot(fireSound, Manager.GameManager.volumn / 2f);
+
+                player.OnDamageSound += () => source.PlayOneShot(damageSound, Manager.GameManager.volumn);
 
                 InitializeEnemies();
 
@@ -93,103 +105,143 @@ namespace SpaceShooter
                     //If that element in dictionary is empty => enemey destroy
 
                     //send player current words
-                    var enemy = Instantiate(this.enemyPf, new Vector2(-10f, -10f), Quaternion.identity);
+                    int index = Random.Range(0, enemyPf.Length);
+                    var enemy = Instantiate(this.enemyPf[index], new Vector2(-10f, -10f), Quaternion.identity);
 
-                    enemy.Setup(keys[i], wrongInOne);
+                    enemy.Setup(keys[i], health);
+
+                    enemy.OnFireSound += () => source.PlayOneShot(fireSound, Manager.GameManager.volumn / 4f);
 
                     enemy.OnDead += (sA, playerKill) =>
                     {
+                        source.PlayOneShot(destroySound, Manager.GameManager.volumn);
                         currentDead++;
-
-                        if (currentDead % (enemyAmount / turnAmount) == 0)
-                            ActiveNewEnemies();
-                        else
-                            player.RemoveAOption(sA);
-
                         if (playerKill)
+                        {
                             killed++;
+                            uiManager.ShowCurrentKill(killed, amountNeeded);
+                        }
+                        ActiveNewEnemies(sA);
                     };
 
                     //Take wrong words
-                    enemy.OnWrong += (match, word) => reviewWords.Enqueue(new Word_Check(word, match));
+                    enemy.OnWrong += (match, word) =>
+                    {
+                        if (match)
+                            source.PlayOneShot(rightSound, Manager.GameManager.volumn);
+                        else
+                            source.PlayOneShot(wrongSound, Manager.GameManager.volumn);
+
+                        reviewWords.Enqueue(new Word_Check(word, match));
+                    };
+
 
                     enemies.Enqueue(enemy);
                 }
             }
 
-            public void ActiveNewEnemies()
+            public void OutOffBullet(string enemyWord)
             {
-                if (enemies.Count <= 0)
+                foreach (var e in currentEnemies)
+                {
+                    if (e.contain == enemyWord)
+                    {
+                        if (e.isActive)
+                        {
+                            e.DoDestroy();
+                            break;
+                        }
+                    }
+                }
+            }
+
+            public void ActiveNewEnemies(string last = "")
+            {
+                if (enemies.Count <= 0 && currentEnemies.Count == enemyAmount)
                 {
                     HandleEnding();
                     return;
                 }
 
-                while (destroyers.Count > 0)
-                    destroyers.Dequeue().DoDestroy();
+                player.RemoveAOption(last);
 
                 int amount = enemyAmount / turnAmount;
 
-                string[] newKeys = new string[amount];
-
-                for (int i = 0; i < amount; i++)
+                if (currentDead % amount == 0)
                 {
-                    if (enemies.Count > 0)
+                    string[] newKeys = new string[amount];
+
+                    for (int i = 0; i < amount; i++)
                     {
-                        var enemy = enemies.Dequeue();
-                        destroyers.Enqueue(enemy.GetComponent<IDestroyable>());
-                        enemy.gameObject.SetActive(true);
-                        newKeys[i] = enemy.contain;
+                        if (enemies.Count > 0)
+                        {
+                            var enemy = enemies.Dequeue();
+
+                            currentEnemies.Enqueue(enemy);
+
+                            enemy.gameObject.SetActive(true);
+
+                            newKeys[i] = enemy.contain;
+                        }
                     }
+                    player.SetKeys(newKeys);
                 }
-                player.SetKeys(newKeys);
             }
 
             public override void HandleReplay()
             {
-                base.HandleReplay();
-
+                ClearAllEnemies();
+                player.EndBattle();
                 keys.Clear();
-
-                StartCoroutine(StartLevel(currentLevel, amountNeeded,enemyAmount, turnAmount, wrongInOne, option));
+                reviewWords.Clear();
+                uiManager.Hide();
+                StartCoroutine(StartLevel(currentLevel, enemyAmount, amountNeeded, turnAmount, health, option));
             }
 
-            public void HandleEnding()
+            public void ClearAllEnemies()
             {
-                bool win = killed >= amountNeeded;
+                while (enemies.Count > 0)
+                    Destroy(enemies.Dequeue().gameObject);
+                while (currentEnemies.Count > 0)
+                    Destroy(currentEnemies.Dequeue().gameObject);
+            }
 
-                if (win)
-                    AudioSource.PlayClipAtPoint(winSound, Vector3.zero, Manager.GameManager.volumn);
-                else
-                    AudioSource.PlayClipAtPoint(loseSound, Vector3.zero, Manager.GameManager.volumn);
-
-                while (destroyers.Count > 0)
-                    destroyers.Dequeue().DoDestroy();
-
-                enemies.Clear();
-
+            public int GetStars(bool win)
+            {
                 int star;
                 if (win)
                     star = 3 - (amountNeeded - killed);
                 else
                     star = 0;
 
-                uiManager.SetupEnding(win, star, reviewWords);
+                return star;
+            }
+            public void HandleEnding()
+            {
+                if (!isEnd)
+                {
+                    isEnd = true;
+
+                    bool win = killed >= amountNeeded;
+
+                    if (win)
+                        source.PlayOneShot(winSound, Manager.GameManager.volumn);
+                    else
+                        source.PlayOneShot(loseSound, Manager.GameManager.volumn);
+
+                    ClearAllEnemies();
+
+                    uiManager.SetupEnding(win, GetStars(win), reviewWords);
+                 }
             }
 
             public override void HandleBackToMenu(bool nextLevel)
             {
-                base.HandleBackToMenu(nextLevel);
-
                 bool win = killed >= amountNeeded;
 
-                int star;
-                if (win)
-                    star = 3 - (amountNeeded - killed);
-                else
-                    star = 0;
+                OnEndLevel?.Invoke(win, currentLevel, GetStars(win), nextLevel);
 
-                OnEndLevel?.Invoke(win, currentLevel, star, nextLevel);
+                uiManager.Hide();
             }
 
             public void QuickLosing()

@@ -1,4 +1,4 @@
-﻿using FallingWords.FW_Manager;
+﻿using UnityEngine.UI;
 using FallingWords.Objects;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,19 +29,28 @@ namespace FallingWords
 
                 private readonly Queue<Word> wordsToOut = new Queue<Word>();
 
+                [SerializeField] protected Queue<IDestroyable> destroyers = new Queue<IDestroyable>(); //Use in replay
+
+
                 private Vector3 initialPos;
 
                 [SerializeField] private int yPos;
 
+                [SerializeField] protected FW_Level_UIManager uiManager;  
 
                 [SerializeField] private Train train;
 
                 public event System.Action<bool, int, int, bool> OnEndLevel;
 
 
+                [SerializeField]
+                Joystick joystick;
 
-                private readonly string[] cheatCode = { "l", "i", "f", "e" };
-                private int index = 0;
+                [SerializeField] private AudioClip switchSound;
+
+                public event System.Action OnLeftMove;
+                public event System.Action OnRightMove;
+                public event System.Action OnDownMove;
 
                 private void Awake()
                 {
@@ -53,29 +62,39 @@ namespace FallingWords
                         boxes[i].whichBox = i;
                 }
 
+
+                //public void CheatCode()
+                //{
+                //    if (Input.anyKeyDown)
+                //    {
+                //        if (Input.GetKeyDown(cheatCode[index]))
+                //        {
+                //            index++;
+
+                //        }
+                //        else
+                //            index = 0; //If missed key
+                //    }
+                //    if (index == cheatCode.Length)
+                //    {
+                //        missedTime += 50;
+                //        countWrong = 0;
+                //        index = 0;
+                //        uiManager.CountWrong(missedTime - countWrong);
+                //    }
+                //}
+
                 private void Update()
                 {
-                   // CheatCode();
-                }
-
-                public void CheatCode()
-                {
-                    if (Input.anyKeyDown)
+                    Vector2 dir = joystick.Direction;
+                    if (dir != Vector2.zero)
                     {
-                        if (Input.GetKeyDown(cheatCode[index]))
-                        {
-                            index++;
-
-                        }
-                        else
-                            index = 0; //If missed key
-                    }
-                    if (index == cheatCode.Length)
-                    {
-                        missedTime += 50;
-                        countWrong = 0;
-                        index = 0;
-                        uiManager.CountWrong(missedTime - countWrong);
+                        if (dir.x < -0.4f)
+                            OnLeftMove?.Invoke();
+                        else if (dir.x > 0.4f)
+                            OnRightMove?.Invoke();
+                        else if (dir.y < -0.4f)
+                            OnDownMove?.Invoke();
                     }
                 }
 
@@ -93,12 +112,6 @@ namespace FallingWords
                     destroyers.Enqueue(train.GetComponent<IDestroyable>());
 
                     subtractStar = (missed / 3) > 0 ? missed / 3 : 1; //count how many missed time will subtract 1 star
-
-                    if (currentLevel == 0 && guide)
-                    {
-                        guide.SetActive(true);
-                        yield return new WaitWhile(() => guide.activeSelf);
-                    }
 
                     RandomChooseTopic();
 
@@ -120,6 +133,31 @@ namespace FallingWords
 
                         var falling = Instantiate(prefabWord, initialPos, Quaternion.identity);
 
+
+                        //Add and remove after destroying
+                        OnLeftMove += () =>
+                        {
+                            falling.InputMoveWordToLeft();
+                            if (!source.isPlaying)
+                                source.PlayOneShot(switchSound, Manager.GameManager.volumn);
+                        };
+
+                        OnRightMove += () =>
+                        {
+                            falling.InputMoveWordToRight();
+
+                            if (!source.isPlaying)
+                                source.PlayOneShot(switchSound, Manager.GameManager.volumn);
+                        };
+
+                        OnDownMove += () =>
+                        {
+                            falling.InputToMoveQuick();
+                            if (!source.isPlaying)
+                                source.PlayOneShot(switchSound, Manager.GameManager.volumn);
+                        };
+
+
                         destroyers.Enqueue(falling.GetComponent<IDestroyable>());
 
                         List<float> pos = new List<float>(); //Find pos first
@@ -134,6 +172,7 @@ namespace FallingWords
 
                             if (!match)
                             {
+                                source.PlayOneShot(wrongSound, Manager.GameManager.volumn);
                                 countWrong++;
                                 uiManager.CountWrong(missedTime - countWrong);
 
@@ -145,6 +184,12 @@ namespace FallingWords
                                     uiManager.ShowCurrentStars(currentStars);
                                 }
                             }
+                            else
+                                source.PlayOneShot(rightSound, Manager.GameManager.volumn);
+
+                            OnLeftMove = null;
+                            OnRightMove = null;
+                            OnDownMove = null;
 
                             reviewWords.Enqueue(new Word_Check(w, match));
 
@@ -160,27 +205,30 @@ namespace FallingWords
                     train.Move();
 
                     if (win)
-                        AudioSource.PlayClipAtPoint(winSound, Vector3.zero, Manager.GameManager.volumn);
+                        source.PlayOneShot(winSound, Manager.GameManager.volumn);
                     else
-                        AudioSource.PlayClipAtPoint(loseSound, Vector3.zero, Manager.GameManager.volumn);
+                        source.PlayOneShot(loseSound, Manager.GameManager.volumn);
 
                     uiManager.SetupEnding(win, currentStars, reviewWords);
                 }
 
                 public override void HandleReplay()
                 {
-                    base.HandleReplay();
-
+                    while (destroyers.Count > 0) //Clear words and train
+                        destroyers.Dequeue().DoDestroy();
+                    reviewWords.Clear();
+                    uiManager.ResetStart();
                     wordsToOut.Clear(); //restore words
+                    uiManager.Hide();
                     StartCoroutine(StartLevel(currentLevel, maxWordsInTopic, missedTime));
                 }
 
                 public override void HandleBackToMenu(bool nextLevel)
                 {
-                    base.HandleBackToMenu(nextLevel);
-
                     bool win = countWrong <= missedTime;
+
                     OnEndLevel?.Invoke(win, currentLevel, currentStars, nextLevel);
+                    uiManager.Hide();
                 }
 
                 public void QuickLosing()

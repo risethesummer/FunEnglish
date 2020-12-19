@@ -37,6 +37,7 @@ namespace FallingWords
                     var parts = line.Split(',');
                     levels.Add(new Scene_Boxes_Words(int.Parse(parts[0]), int.Parse(parts[1]), int.Parse(parts[2])));
                 }
+                LoadGame();
             }
 
             public void StartLevel(int level, int maxWords, int missed)

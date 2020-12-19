@@ -4,7 +4,7 @@ namespace SpaceShooter
 {
     namespace Objects
     {
-        public class Bullet : MonoBehaviour
+        public class Bullet : MonoBehaviour, IDestroyBullet
         {
             [SerializeField]
             private float speed;
@@ -13,20 +13,23 @@ namespace SpaceShooter
 
             private Vector2 direction = Vector2.zero;
 
-            private Rigidbody2D rigid;
-
             private void Awake()
             {
                 isActive = false;
                 gameObject.SetActive(false);
-                rigid = GetComponent<Rigidbody2D>();
+            }
+
+            private void Update()
+            {
+                if (isActive)
+                    transform.Translate(direction * speed * Time.deltaTime);
             }
 
             public void DoActive(Vector2 direction)
             {
                 isActive = true;
 
-                rigid.AddForce(direction * speed);
+                this.direction = direction;
             }
 
             public void SetPosition(Vector2 newPos)
@@ -51,6 +54,10 @@ namespace SpaceShooter
         void TakenDamage(Word_SymAnt sA);
     }
 
+    public interface IDestroyBullet
+    {
+        void DoDestroy();
+    }
 }
 
 

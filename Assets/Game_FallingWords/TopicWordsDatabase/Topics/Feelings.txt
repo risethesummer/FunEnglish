@@ -523,7 +523,7 @@ nettle,verb,hard
 neurosis,noun,hard
 nuts,adjective,hard
 offend,verb,medium
-OK,adjective,easy
+ok,adjective,easy
 open-mouthed,adjective,hard
 outrage,noun,medium
 outrage,verb,medium
